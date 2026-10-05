@@ -1,0 +1,19 @@
+kingdom,subcategory,common_name,scientific_name,trait_gene
+ANIMAL,Mammals,Gray wolf,Canis lupus,coat
+ANIMAL,Mammals,Red fox,Vulpes vulpes,coat
+ANIMAL,Mammals,Snowshoe hare,Lepus americanus,coat
+ANIMAL,Mammals,African savanna elephant,Loxodonta africana,coat
+ANIMAL,Birds,Rock pigeon,Columba livia,plumage
+ANIMAL,Birds,Emperor penguin,Aptenodytes forsteri,plumage
+ANIMAL,Reptiles,Green sea turtle,Chelonia mydas,scalePigment
+ANIMAL,Insects,Western honey bee,Apis mellifera,bodyColor
+ANIMAL,Amphibians,Axolotl,Ambystoma mexicanum,skinPigment
+ANIMAL,Fish,Zebrafish,Danio rerio,scalePigment
+PLANT,Flowering plants,Thale cress,Arabidopsis thaliana,leafPigment
+PLANT,Flowering plants,Maize,Zea mays,leafPigment
+PLANT,Flowering plants,Sunflower,Helianthus annuus,leafPigment
+PLANT,Flowering plants,Asian rice,Oryza sativa,leafPigment
+PLANT,Flowering plants,Pedunculate oak,Quercus robur,leafPigment
+PLANT,Conifers,Scots pine,Pinus sylvestris,needlePigment
+PLANT,Ferns,Bracken fern,Pteridium aquilinum,frondPigment
+PLANT,Mosses,Ceratodon moss,Ceratodon purpureus,leafPigment

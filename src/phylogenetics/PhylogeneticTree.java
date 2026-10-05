@@ -1,8 +1,9 @@
-package evolab.phylogenetics;
+package phylogenetics;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Composite-pattern representation of a rooted phylogenetic tree.
@@ -107,7 +108,7 @@ public class PhylogeneticTree {
                 sb.append(")");
             }
             if (node.branchLength > 0) {
-                sb.append(":").append(String.format("%.4f", node.branchLength));
+                sb.append(":").append(String.format(Locale.ROOT, "%.4f", node.branchLength));
             }
         }
     }

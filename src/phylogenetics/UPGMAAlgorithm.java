@@ -1,26 +1,59 @@
-/**
- * Module C — Phylogenetics + Analysis
- *
- * Week 2 milestone: STUB implementation. Just needs to compile, implement the
- * Strategy interface, and return a plausible (even if not fully correct) tree
- * so the rest of the pipeline (evolve -> record -> reconstruct -> RF distance)
- * can be integration-tested end-to-end by Week 3.
- *
- * Full UPGMA logic (below, commented) is the real Week 3+ implementation:
- *   1. Start with each organism as its own cluster/leaf
- *   2. Find the two closest clusters in the distance matrix
- *   3. Merge them into a new node; new branch lengths = distance / 2
- *   4. Recompute distances from the new cluster to all others (average linkage)
- *   5. Repeat until one cluster (the root) remains
- */
-public class UPGMAAlgorithm implements TreeBuildingAlgorithm {
+package phylogenetics;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+/** Unweighted pair group method with arithmetic mean (UPGMA). */
+public final class UPGMAAlgorithm implements TreeBuildingAlgorithm {
+    private record Cluster(PhylogeneticTree.TreeNode node, double height, int size, Set<Integer> members) {}
 
     @Override
-    public PhylogeneticTree buildTree(DistanceMatrix distanceMatrix) {
-        // --- STUB for Week 2 ---
-        // TODO (Week 3): implement real UPGMA clustering described above.
-        // For now, return an empty/placeholder tree so integration tests
-        // can run without a NullPointerException further down the pipeline.
-        return new PhylogeneticTree();
+    public PhylogeneticTree buildTree(DistanceMatrix distances) {
+        int n = distances.size();
+        if (n == 0) throw new IllegalArgumentException("At least one taxon is required");
+        List<Cluster> clusters = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            var leaf = new PhylogeneticTree.TreeNode(distances.getTaxa().get(i));
+            clusters.add(new Cluster(leaf, 0.0, 1, Set.of(i)));
+        }
+
+        while (clusters.size() > 1) {
+            int bestI = 0, bestJ = 1;
+            double bestDistance = Double.POSITIVE_INFINITY;
+            for (int i = 0; i < clusters.size(); i++) {
+                for (int j = i + 1; j < clusters.size(); j++) {
+                    double d = averageDistance(distances, clusters.get(i), clusters.get(j));
+                    if (d < bestDistance) { bestDistance = d; bestI = i; bestJ = j; }
+                }
+            }
+
+            Cluster a = clusters.get(bestI), b = clusters.get(bestJ);
+            double height = bestDistance / 2.0;
+            var parent = new PhylogeneticTree.TreeNode("node-" + clusters.size() + "-" + bestI + "-" + bestJ);
+            setBranch(a.node(), Math.max(0.0, height - a.height()));
+            setBranch(b.node(), Math.max(0.0, height - b.height()));
+            parent.setHeight(height);
+            parent.addChild(a.node());
+            parent.addChild(b.node());
+            Set<Integer> members = new HashSet<>(a.members());
+            members.addAll(b.members());
+            Cluster merged = new Cluster(parent, height, a.size() + b.size(), Set.copyOf(members));
+            clusters.remove(bestJ);
+            clusters.remove(bestI);
+            clusters.add(merged);
+        }
+        return new PhylogeneticTree(clusters.get(0).node());
+    }
+
+    private static void setBranch(PhylogeneticTree.TreeNode node, double branchLength) {
+        node.setBranchLength(branchLength);
+    }
+
+    private static double averageDistance(DistanceMatrix matrix, Cluster a, Cluster b) {
+        double sum = 0;
+        for (int i : a.members()) for (int j : b.members()) sum += matrix.getDistance(i, j);
+        return sum / (a.size() * (double) b.size());
     }
 }

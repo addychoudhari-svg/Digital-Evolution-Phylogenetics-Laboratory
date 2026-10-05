@@ -19,6 +19,14 @@ public class Region {
         subRegions.add(region);
     }
 
+    public String getName() { return name; }
+    public String getTerrainColor() { return terrainColor; }
+    public double getResourceLevel() { return resourceLevel; }
+    public List<Region> getSubRegions() { return List.copyOf(subRegions); }
+    public double getTotalResourceLevel() {
+        return resourceLevel + subRegions.stream().mapToDouble(Region::getTotalResourceLevel).sum();
+    }
+
     public void printStructure(String indent) {
         System.out.println(indent + name + " [terrain=" + terrainColor
             + ", resource=" + resourceLevel + "]");

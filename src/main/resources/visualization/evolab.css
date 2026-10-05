@@ -1,0 +1,103 @@
+.app-root {
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: linear-gradient(to bottom right, #09111f, #142337 54%, #1a2b42);
+}
+
+.glass-header {
+    -fx-padding: 12px 16px 10px 16px;
+    -fx-background-color: linear-gradient(to right, rgba(46, 76, 111, 0.78), rgba(18, 34, 55, 0.84));
+    -fx-border-color: rgba(195, 226, 255, 0.22);
+    -fx-border-width: 0 0 1px 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 18, 0.18, 0, 6);
+}
+
+.glass-header-row {
+    -fx-alignment: center-left;
+    -fx-spacing: 9px;
+}
+
+.glass-header-row > .label {
+    -fx-text-fill: #d8e9fa;
+    -fx-font-weight: 600;
+}
+
+.glass-header-row > .label:first-child {
+    -fx-text-fill: #f4f8ff;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+}
+
+.glass-panel {
+    -fx-background-color: linear-gradient(to bottom right, rgba(78, 119, 160, 0.28), rgba(16, 31, 50, 0.58));
+    -fx-background-radius: 16px;
+    -fx-border-color: rgba(198, 228, 255, 0.22);
+    -fx-border-radius: 16px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.28), 16, 0.16, 0, 5);
+}
+
+.app-root .label {
+    -fx-text-fill: #dce9f6;
+}
+
+.app-root .button, .app-root .toggle-button, .app-root .combo-box-base, .app-root .text-field {
+    -fx-text-fill: #edf6ff;
+    -fx-background-color: linear-gradient(to bottom, rgba(92, 136, 179, 0.48), rgba(42, 72, 106, 0.7));
+    -fx-background-radius: 9px;
+    -fx-border-color: rgba(207, 232, 255, 0.28);
+    -fx-border-radius: 9px;
+    -fx-padding: 6px 10px;
+}
+
+.app-root .button:hover, .app-root .toggle-button:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(119, 172, 218, 0.62), rgba(53, 91, 132, 0.82));
+}
+
+.app-root .tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: rgba(13, 26, 43, 0.9);
+}
+
+.app-root .tab-pane .tab {
+    -fx-background-color: rgba(47, 73, 102, 0.56);
+    -fx-background-radius: 10px 10px 0 0;
+}
+
+.app-root .tab-pane .tab:selected {
+    -fx-background-color: rgba(94, 145, 190, 0.58);
+}
+
+.app-root .tab-pane .tab .tab-label {
+    -fx-text-fill: #edf6ff;
+}
+
+.app-root .scroll-pane, .app-root .viewport {
+    -fx-background-color: transparent;
+}
+
+.glass-text-area, .glass-text-area .content {
+    -fx-text-fill: #e4f1fc;
+    -fx-control-inner-background: rgba(11, 23, 38, 0.82);
+    -fx-background-color: rgba(11, 23, 38, 0.82);
+    -fx-background-radius: 9px;
+    -fx-border-color: rgba(191, 224, 252, 0.2);
+    -fx-border-radius: 9px;
+}
+
+.glass-chart, .glass-chart .chart-plot-background {
+    -fx-background-color: rgba(12, 24, 40, 0.3);
+}
+
+.glass-chart .chart-title, .glass-chart .axis-label, .glass-chart .axis-tick-mark,
+.glass-chart .axis .tick-label, .glass-chart .chart-legend-item {
+    -fx-text-fill: #dce9f6;
+    -fx-fill: #dce9f6;
+}
+
+.glass-chart .chart-vertical-grid-lines, .glass-chart .chart-horizontal-grid-lines {
+    -fx-stroke: rgba(190, 220, 246, 0.12);
+}
+
+.app-root .separator *.line {
+    -fx-border-color: rgba(206, 231, 252, 0.25);
+}

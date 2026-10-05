@@ -9,9 +9,19 @@ public class MeiosisReproduction implements ReproductionStrategy {
     private final Random random;
 
     public MeiosisReproduction(double mutationRate, double mutationMagnitude) {
+        this(mutationRate, mutationMagnitude, new Random());
+    }
+
+    public MeiosisReproduction(double mutationRate, double mutationMagnitude, long seed) {
+        this(mutationRate, mutationMagnitude, new Random(seed));
+    }
+
+    private MeiosisReproduction(double mutationRate, double mutationMagnitude, Random random) {
+        if (mutationRate < 0 || mutationRate > 1) throw new IllegalArgumentException("Mutation rate must be in [0,1]");
+        if (mutationMagnitude < 0) throw new IllegalArgumentException("Mutation magnitude must be non-negative");
         this.mutationRate = mutationRate;
         this.mutationMagnitude = mutationMagnitude;
-        this.random = new Random();
+        this.random = random;
     }
 
     @Override

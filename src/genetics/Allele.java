@@ -6,6 +6,8 @@ public class Allele {
     private final boolean dominant;
 
     public Allele(String variantName, double effectValue, boolean dominant) {
+        if (variantName == null || variantName.isBlank()) throw new IllegalArgumentException("Allele variant name is required");
+        if (!Double.isFinite(effectValue)) throw new IllegalArgumentException("Allele effect must be finite");
         this.variantName = variantName;
         this.effectValue = effectValue;
         this.dominant = dominant;

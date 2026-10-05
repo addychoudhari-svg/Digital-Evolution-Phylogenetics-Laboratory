@@ -1,0 +1,4 @@
+experiment,parameter,mean_genetic_diversity,rf_distance,phenotype_divergence
+mutation-rate-sweep,0.001,0.0,51,0.0
+mutation-rate-sweep,0.02,0.8597701149425288,49,0.0
+mutation-rate-sweep,0.15,1.1701149425287356,48,0.0
